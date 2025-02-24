@@ -2,7 +2,10 @@ package edu.games.tic_tac_toe;
 
 public class AIStats {
     public final Class<? extends TicTacToeAI> ai;
+    private long startupTime;
     private int played;
+    private int moves;
+    private long moveTime;
     private int wins;
     private int ties;
     private int losses;
@@ -12,8 +15,14 @@ public class AIStats {
         this.ai = ai;
     }
 
-    protected void addPlay(){
+    protected void addStartupTime(long nanos) {
+        startupTime += nanos;
         played++;
+    }
+
+    protected void addMoveTime(long nanos){
+        moveTime += nanos;
+        moves++;
     }
 
     protected void addWin(){
@@ -50,6 +59,14 @@ public class AIStats {
 
     public int getForfeit() {
         return forfeit;
+    }
+
+    public long getAverageStartUp(){
+        return startupTime/played;
+    }
+
+    public long getAverageMove(){
+        return moveTime/moves;
     }
 
     @Override
