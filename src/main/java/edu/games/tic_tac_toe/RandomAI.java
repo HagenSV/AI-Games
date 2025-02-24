@@ -1,5 +1,8 @@
 package edu.games.tic_tac_toe;
 
+/**
+ * Example TicTacToeAI, good for testing other AIs
+ */
 public class RandomAI extends TicTacToeAI {
 
     public RandomAI(char assignedChar) {
@@ -20,6 +23,7 @@ public class RandomAI extends TicTacToeAI {
     @Override
     public int play(TicTacToeBoard board) {
         int move = random();
+        //Keep attempting random moves until one is valid
         while (!board.isOpen(move)){
             move = random();
         }
