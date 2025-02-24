@@ -1,4 +1,4 @@
-package edu.games;
+package edu.games.util;
 
 import org.junit.jupiter.api.Test;
 

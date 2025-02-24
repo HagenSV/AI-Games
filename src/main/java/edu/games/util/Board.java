@@ -1,4 +1,4 @@
-package edu.games;
+package edu.games.util;
 
 public class Board {
     public final int ROWS;

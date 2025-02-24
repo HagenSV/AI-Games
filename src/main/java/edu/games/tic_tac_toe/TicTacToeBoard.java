@@ -1,6 +1,6 @@
 package edu.games.tic_tac_toe;
 
-import edu.games.Board;
+import edu.games.util.Board;
 
 public class TicTacToeBoard extends Board {
 
