@@ -2,6 +2,7 @@ package edu.games.tic_tac_toe;
 
 public class AIStats {
     public final Class<? extends TicTacToeAI> ai;
+    private int played;
     private int wins;
     private int ties;
     private int losses;
@@ -9,6 +10,10 @@ public class AIStats {
 
     public AIStats(Class<? extends TicTacToeAI> ai){
         this.ai = ai;
+    }
+
+    protected void addPlay(){
+        played++;
     }
 
     protected void addWin(){
@@ -27,6 +32,10 @@ public class AIStats {
         forfeit++;
     }
 
+    public int getPlayed() {
+        return played;
+    }
+
     public int getWins() {
         return wins;
     }
@@ -41,5 +50,18 @@ public class AIStats {
 
     public int getForfeit() {
         return forfeit;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("AI Stats\n");
+        sb.append("Played: ").append(played).append("\n");
+        sb.append("Wins: ").append(wins).append("\n");
+        sb.append("Ties: ").append(ties).append("\n");
+        sb.append("Losses: ").append(losses).append("\n");
+        sb.append("Forfeit: ").append(forfeit).append("\n");
+
+        return sb.toString();
     }
 }
