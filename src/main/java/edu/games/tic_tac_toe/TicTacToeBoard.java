@@ -66,4 +66,35 @@ public class TicTacToeBoard extends Board {
         }
         return true;
     }
+
+    /**
+     * Checks for a winner
+     * @return the char representing the winner or ' ' if no winner
+     */
+    public char checkWin(){
+        for (int i = 0; i < 3; i++){
+            //Check rows for winner
+            if (winner(getVal(i,0),getVal(i,1),getVal(i,2))){
+                return getVal(i,1);
+            }
+
+            //Check columns for winner
+            if (winner(getVal(0,i),getVal(1,i),getVal(2,i))){
+                return getVal(0,i);
+            }
+        }
+
+        if (winner(getVal(0,0),getVal(1,1),getVal(2,2))){
+            return getVal(1,1);
+        }
+        if (winner(getVal(0,2),getVal(1,1),getVal(2,0))){
+            return getVal(1,1);
+        }
+
+        return ' ';
+    }
+
+    private boolean winner(char val1, char val2, char val3){
+        return val1 != ' ' && val1 == val2 && val2 == val3;
+    }
 }
