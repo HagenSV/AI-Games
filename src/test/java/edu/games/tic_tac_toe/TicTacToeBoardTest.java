@@ -48,6 +48,18 @@ class TicTacToeBoardTest {
     }
 
     @Test
+    void testInvalid(){
+        TicTacToeBoard b = new TicTacToeBoard();
+        b.setVal(-1,'X');
+    }
+
+    @Test
+    void testInvalid2(){
+        TicTacToeBoard b = new TicTacToeBoard();
+        b.setVal(9,'X');
+    }
+
+    @Test
     void checkWinEmpty(){
         TicTacToeBoard b = new TicTacToeBoard();
         assertEquals(' ',b.checkWin());

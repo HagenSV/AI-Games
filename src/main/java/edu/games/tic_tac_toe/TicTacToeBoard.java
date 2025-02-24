@@ -21,18 +21,17 @@ public class TicTacToeBoard extends Board {
 
     @Override
     public boolean setVal(int cell, char val) {
-        if (getVal(cell) != ' '){
-            return false;
-        }
+        if (cell < 0 || cell >= CELLS){ return false; }
+        if (getVal(cell) != ' '){ return false; }
         return super.setVal(cell, val);
     }
 
     @Override
     public boolean setVal(int r, int c, char val) {
-        if (getVal(r,c) != ' '){
-            return false;
-        }
-        return super.setVal(r, c, val);
+        if (r < 0 || r >= ROWS){ return false; }
+        if (c < 0 || c >= COLS){ return false; }
+        if (getVal(r,c) != ' '){ return false; }
+        return super.setVal(r,c , val);
     }
 
     /**
