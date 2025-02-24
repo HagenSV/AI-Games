@@ -1,28 +1,25 @@
 package edu.games.tic_tac_toe;
 
 public class TicTacToeGame {
-    private final Class<? extends TicTacToeAI> ai1;
-    private final Class<? extends TicTacToeAI> ai2;
+    private final AIStats ai1;
+    private final AIStats ai2;
 
-    public static void main(String[] args) {
-        new TicTacToeGame(RandomAI.class,RandomAI.class);
-    }
-
-    public TicTacToeGame(Class<? extends TicTacToeAI> ai1, Class<? extends TicTacToeAI> ai2){
+    public TicTacToeGame(AIStats ai1, AIStats ai2){
         this.ai1 = ai1;
         this.ai2 = ai2;
+        play();
     }
 
-    public GameResults play(){
+    private void play(){
         TicTacToeBoard board = new TicTacToeBoard();
         TicTacToeAI player1;
         TicTacToeAI player2;
         try {
-            player1 = (TicTacToeAI) ai1.getConstructors()[0].newInstance('X');
-            player2 = (TicTacToeAI) ai2.getConstructors()[0].newInstance('O');
+            player1 = (TicTacToeAI) ai1.ai.getConstructors()[0].newInstance('X');
+            player2 = (TicTacToeAI) ai2.ai.getConstructors()[0].newInstance('O');
         } catch (Exception e){
             System.out.println("Failed to initialize AI");
-            return null;
+            return;
         }
 
         boolean p1turn = true;
@@ -62,22 +59,23 @@ public class TicTacToeGame {
         }
 
         if (winner == 'X'){
-            return new GameResults(ai1, forfeit);
+            ai1.addWin();
+            if (forfeit){
+                ai2.addForfeit();
+            } else {
+                ai2.addLoss();
+            }
         }
         else if (winner == 'O'){
-            return new GameResults(ai2, forfeit);
+            ai2.addWin();
+            if (forfeit){
+                ai2.addForfeit();
+            } else {
+                ai2.addLoss();
+            }
         } else {
-            return new GameResults(null, false);
-        }
-    }
-
-    public static class GameResults {
-        public final Class<? extends TicTacToeAI> winner;
-        public final boolean opponentForfeit;
-
-        GameResults(Class<? extends TicTacToeAI> winner, boolean opponentForfeit){
-            this.winner = winner;
-            this.opponentForfeit = opponentForfeit;
+            ai1.addTie();
+            ai2.addTie();
         }
     }
 }
