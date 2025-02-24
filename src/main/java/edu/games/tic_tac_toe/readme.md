@@ -1,4 +1,4 @@
-(Back)[https://github.com/HagenSV/AI-Games]
+[Back](https://github.com/HagenSV/AI-Games)
 
 # Tic-Tac-Toe
 
@@ -7,7 +7,7 @@ To create an AI, clone the repository and create a class which extends `tic_tac_
 The tournament will track many statistics for each AI, including:
 - Initialization time
 - Think time
-- Wins, Ties, Losses, and Forfeitures;
+- Wins, Ties, Losses, and Forfeitures
 
 An AI automatically forfeits the game if it makes 10 invalid moves in a single turn.
 

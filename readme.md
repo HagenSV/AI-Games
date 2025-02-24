@@ -6,4 +6,4 @@ As time goes on, I will continue adding more game tournaments.
 
 For more details, see the readme file for the game of interest
 
-(Tic-Tac-Toe)[(Back)[/HagenSV/AI-Games/blob/master/src/main/java/edu/games/tic_tac_toe/readme.md]
+[Tic-Tac-Toe](https://github.com/HagenSV/AI-Games/blob/master/src/main/java/edu/games/tic_tac_toe/readme.md)
