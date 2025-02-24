@@ -1,7 +1,5 @@
 package edu.games;
 
-import java.util.UUID;
-
 public class Board {
     public final int ROWS;
     public final int COLS;
