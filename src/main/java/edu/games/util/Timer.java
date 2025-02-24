@@ -8,15 +8,8 @@ public class Timer {
     private static Timer instance;
     private long startTime;
 
-    private Timer(){
+    public Timer(){
         startTime = 0;
-    }
-
-    public static Timer getInstance(){
-        if (instance == null){
-            instance = new Timer();
-        }
-        return instance;
     }
 
     /**
