@@ -6,6 +6,11 @@ public class RandomAI extends TicTacToeAI {
         super(assignedChar);
     }
 
+    @Override
+    String getName() {
+        return "RandomAI";
+    }
+
     /**
      * Requests the bot to make a move
      *
