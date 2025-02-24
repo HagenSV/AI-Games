@@ -3,7 +3,7 @@ package edu.games.tic_tac_toe;
 public class TicTacToeTournament {
 
     @SafeVarargs
-    public TicTacToeTournament(Class<? extends TicTacToeAI>... ais){
+    public static AIStats[] play(Class<? extends TicTacToeAI>... ais){
         int COUNT = ais.length;
         AIStats[] stats = new AIStats[COUNT];
 
@@ -14,8 +14,10 @@ public class TicTacToeTournament {
 
         for (int i = 0; i < COUNT; i++){
             for (int j = 0; j < COUNT; j++){
-                TicTacToeGame game = new TicTacToeGame(stats[i],stats[j]);
+                new TicTacToeGame(stats[i],stats[j]);
             }
         }
+
+        return stats;
     }
 }
