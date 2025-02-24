@@ -15,7 +15,7 @@ public class RandomAI extends TicTacToeAI {
     @Override
     public int play(TicTacToeBoard board) {
         int move = random();
-        while (board.getVal(move) != ' '){
+        while (!board.isOpen(move)){
             move = random();
         }
         return move;
