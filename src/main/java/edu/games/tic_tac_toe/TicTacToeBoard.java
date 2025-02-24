@@ -36,6 +36,25 @@ public class TicTacToeBoard extends Board {
     }
 
     /**
+     * Determines if a cell is open for play
+     * @param cell the id of the cell to check
+     * @return true if the cell can be played on
+     */
+    public boolean isOpen(int cell){
+        return getVal(cell) == ' ';
+    }
+
+    /**
+     * Determines if a cell is open for play
+     * @param r the row of the cell to check
+     * @param c the column of the cell to check
+     * @return true if the cell can be played on
+     */
+    public boolean isOpen(int r, int c){
+        return getVal(r,c) == ' ';
+    }
+
+    /**
      * Checks if the game board is full
      * @return true if there are no open spaces
      */
