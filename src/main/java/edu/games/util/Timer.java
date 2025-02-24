@@ -12,7 +12,7 @@ public class Timer {
         startTime = 0;
     }
 
-    public Timer getInstance(){
+    public static Timer getInstance(){
         if (instance == null){
             instance = new Timer();
         }
