@@ -8,6 +8,8 @@ public abstract class TicTacToeAI {
         ASSIGNED_CHAR = assignedChar;
     }
 
+    abstract String getName();
+
     /**
      * Requests the bot to make a move
      * @param board the board to play on
