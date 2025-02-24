@@ -13,7 +13,7 @@ public class TicTacToeGame {
         this.ai2 = ai2;
     }
 
-    public Class<? extends TicTacToeAI> play(){
+    public GameResults play(){
         TicTacToeBoard board = new TicTacToeBoard();
         TicTacToeAI player1;
         TicTacToeAI player2;
@@ -62,12 +62,22 @@ public class TicTacToeGame {
         }
 
         if (winner == 'X'){
-            return ai1;
+            return new GameResults(ai1, forfeit);
         }
         else if (winner == 'O'){
-            return ai2;
+            return new GameResults(ai2, forfeit);
         } else {
-            return null;
+            return new GameResults(null, false);
+        }
+    }
+
+    public static class GameResults {
+        public final Class<? extends TicTacToeAI> winner;
+        public final boolean opponentForfeit;
+
+        GameResults(Class<? extends TicTacToeAI> winner, boolean opponentForfeit){
+            this.winner = winner;
+            this.opponentForfeit = opponentForfeit;
         }
     }
 }
