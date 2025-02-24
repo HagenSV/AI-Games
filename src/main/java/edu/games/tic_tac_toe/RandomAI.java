@@ -10,7 +10,7 @@ public class RandomAI extends TicTacToeAI {
     }
 
     @Override
-    String getName() {
+    public String getName() {
         return "RandomAI";
     }
 
