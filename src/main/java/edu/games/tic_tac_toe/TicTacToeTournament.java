@@ -2,8 +2,15 @@ package edu.games.tic_tac_toe;
 
 public class TicTacToeTournament {
 
-    @SafeVarargs
-    public static AIStats[] play(Class<? extends TicTacToeAI>... ais){
+    public static void main(String[] args) {
+        AIStats[] stats = TicTacToeTournament.play(new RandomAI());
+
+        for (AIStats stat : stats) {
+            System.out.println(stat);
+        }
+    }
+
+    public static AIStats[] play(TicTacToeAI... ais){
         int COUNT = ais.length;
         AIStats[] stats = new AIStats[COUNT];
 
