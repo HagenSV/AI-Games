@@ -7,3 +7,8 @@ As time goes on, I will continue adding more game tournaments.
 For more details, see the readme file for the game of interest
 
 [Tic-Tac-Toe](./docs/tic-tac-toe.md)
+*Connect 4*
+*Battleship*
+*Blackjack*
+*Euchre*
+*Prisoner's Dilemma*
