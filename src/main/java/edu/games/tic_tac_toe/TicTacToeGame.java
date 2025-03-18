@@ -3,40 +3,20 @@ package edu.games.tic_tac_toe;
 import edu.games.util.Timer;
 
 public class TicTacToeGame {
-    private final AIStats ai1;
-    private final AIStats ai2;
+    private final AIStats stats1;
+    private final AIStats stats2;
 
-    public TicTacToeGame(AIStats ai1, AIStats ai2){
-        this.ai1 = ai1;
-        this.ai2 = ai2;
+    public TicTacToeGame(AIStats stats1, AIStats stats2){
+        this.stats1 = stats1;
+        this.stats2 = stats2;
         play();
     }
 
     private void play(){
         TicTacToeBoard board = new TicTacToeBoard();
-        TicTacToeAI player1;
-        TicTacToeAI player2;
+        TicTacToeAI ai1 = stats1.ai;
+        TicTacToeAI ai2 = stats2.ai;
         Timer t = new Timer();
-
-        try {
-            long p1Start;
-            long p2Start;
-
-            t.start();
-            player1 = (TicTacToeAI) ai1.ai.getConstructors()[0].newInstance('X');
-            p1Start = t.stop();
-
-            t.start();
-            player2 = (TicTacToeAI) ai2.ai.getConstructors()[0].newInstance('O');
-            p2Start = t.stop();
-
-            ai1.addStartupTime(p1Start);
-            ai2.addStartupTime(p2Start);
-
-        } catch (Exception e){
-            System.out.println("Failed to initialize AI");
-            return;
-        }
 
         boolean p1turn = true;
         char winner = ' ';
@@ -47,9 +27,9 @@ public class TicTacToeGame {
             t.start();
             if (p1turn) {
                 for (int i = 1; i <= 10; i++) {
-                    int move = player1.play(copy);
+                    int move = ai1.play('X',copy);
                     if (board.setVal(move,'X')){
-                        ai1.addMoveTime(t.stop());
+                        stats1.addMoveTime(t.stop());
                         break;
                     }
                     if (i == 10){
@@ -59,9 +39,9 @@ public class TicTacToeGame {
                 }
             } else {
                 for (int i = 1; i <= 10; i++) {
-                    int move = player2.play(copy);
+                    int move = ai2.play('O',copy);
                     if (board.setVal(move,'O')){
-                        ai2.addMoveTime(t.stop());
+                        stats2.addMoveTime(t.stop());
                         break;
                     }
                     if (i == 10){
@@ -71,7 +51,6 @@ public class TicTacToeGame {
                 }
             }
 
-
             if (!forfeit) {
                 winner = board.checkWin();
                 p1turn = !p1turn;
@@ -79,23 +58,23 @@ public class TicTacToeGame {
         }
 
         if (winner == 'X'){
-            ai1.addWin();
+            stats1.addWin();
             if (forfeit){
-                ai2.addForfeit();
+                stats2.addForfeit();
             } else {
-                ai2.addLoss();
+                stats2.addLoss();
             }
         }
         else if (winner == 'O'){
-            ai2.addWin();
+            stats2.addWin();
             if (forfeit){
-                ai2.addForfeit();
+                stats1.addForfeit();
             } else {
-                ai2.addLoss();
+                stats1.addLoss();
             }
         } else {
-            ai1.addTie();
-            ai2.addTie();
+            stats1.addTie();
+            stats2.addTie();
         }
     }
 }

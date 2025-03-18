@@ -2,18 +2,13 @@ package edu.games.tic_tac_toe;
 
 public abstract class TicTacToeAI {
 
-    protected final char ASSIGNED_CHAR;
-
-    public TicTacToeAI(char assignedChar){
-        ASSIGNED_CHAR = assignedChar;
-    }
-
     public abstract String getName();
 
     /**
-     * Requests the bot to make a move
+     * Requests the AI to make a move
+     * @param assigned the character the AI is playing as
      * @param board the board to play on
      * @return the id of the cell to play
      */
-    public abstract int play(TicTacToeBoard board);
+    public abstract int play(char assigned, TicTacToeBoard board);
 }

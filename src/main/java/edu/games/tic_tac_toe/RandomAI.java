@@ -5,10 +5,6 @@ package edu.games.tic_tac_toe;
  */
 public class RandomAI extends TicTacToeAI {
 
-    public RandomAI(char assignedChar) {
-        super(assignedChar);
-    }
-
     @Override
     public String getName() {
         return "RandomAI";
@@ -21,7 +17,7 @@ public class RandomAI extends TicTacToeAI {
      * @return the id of the cell to play
      */
     @Override
-    public int play(TicTacToeBoard board) {
+    public int play(char assigned, TicTacToeBoard board) {
         int move = random();
         //Keep attempting random moves until one is valid
         while (!board.isOpen(move)){
@@ -30,7 +26,7 @@ public class RandomAI extends TicTacToeAI {
         return move;
     }
 
-    private int random(){
-        return (int)(Math.random()*9);
+    private int random() {
+        return (int) (Math.random() * 9);
     }
 }
