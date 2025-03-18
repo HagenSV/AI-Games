@@ -1,4 +1,4 @@
-[Back](https://github.com/HagenSV/AI-Games)
+[Back](../readme.md)
 
 # Tic-Tac-Toe
 
