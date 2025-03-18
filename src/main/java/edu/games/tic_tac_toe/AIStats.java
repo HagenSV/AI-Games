@@ -1,8 +1,14 @@
 package edu.games.tic_tac_toe;
 
 public class AIStats {
-    public final Class<? extends TicTacToeAI> ai;
-    private long startupTime;
+    public final TicTacToeAI ai;
+
+    public static final int WIN_POINTS = 4;
+    public static final int TIE_POINTS = 2;
+    public static final int LOSS_POINTS = 0;
+    public static final int FORFEIT_POINTS = -2;
+
+    private long initTime;
     private int played;
     private int moves;
     private long moveTime;
@@ -11,12 +17,12 @@ public class AIStats {
     private int losses;
     private int forfeit;
 
-    public AIStats(Class<? extends TicTacToeAI> ai){
+    public AIStats(TicTacToeAI ai){
         this.ai = ai;
     }
 
     protected void addStartupTime(long nanos) {
-        startupTime += nanos;
+        initTime += nanos;
         played++;
     }
 
@@ -61,24 +67,33 @@ public class AIStats {
         return forfeit;
     }
 
-    public long getAverageStartUp(){
-        return startupTime/played;
+    public long getAverageInit(){
+        return initTime /played;
     }
 
     public long getAverageMove(){
         return moveTime/moves;
     }
 
+    public int getScore(){
+        return getWins() * WIN_POINTS +
+                getTies() * TIE_POINTS +
+                getLosses() * LOSS_POINTS +
+                getForfeit() * FORFEIT_POINTS;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("AI Stats\n");
-        sb.append("Played: ").append(played).append("\n");
-        sb.append("Wins: ").append(wins).append("\n");
-        sb.append("Ties: ").append(ties).append("\n");
-        sb.append("Losses: ").append(losses).append("\n");
-        sb.append("Forfeit: ").append(forfeit).append("\n");
-
+        sb.append(ai.getName()).append(" Stats\n");
+        sb.append("Played: ").append(getPlayed()).append("\n");
+        sb.append("Wins: ").append(getWins()).append("\n");
+        sb.append("Ties: ").append(getTies()).append("\n");
+        sb.append("Losses: ").append(getLosses()).append("\n");
+        sb.append("Forfeit: ").append(getForfeit()).append("\n");
+        sb.append("Average Init Time: ").append(getAverageInit()/1000).append("ms \n");
+        sb.append("Average Move Time: ").append(getAverageMove()/1000).append("ms \n");
+        sb.append("Score: ").append(getScore()).append("\n");
         return sb.toString();
     }
 }
